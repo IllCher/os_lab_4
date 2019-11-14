@@ -180,14 +180,21 @@ void tree_print(pnode t, int depth) {
         tree_print(t -> b, depth);
     }
 }
-
+int create_tmp() {
+    char *fn = strdup("/tmp/tmpf.XXXXXX");
+    int fd = mkstemp(fn);
+    unlink(fn);
+    free(fn);
+    write(fd, "                                                                                                     ", 100);
+    return fd;
+}
 
 int main(int argc, char* argv[]) {
     setvbuf(stdout, (char *) NULL, _IONBF, 0);
     pnode test = NULL;
     char cmd[100] = {'\0'};
     ans *parsed = (ans *) malloc(sizeof(ans));
-    int fd = open(argv[1], O_RDWR, S_IRUSR | S_IWUSR);
+    int fd = create_tmp();
     lseek(fd, 100, SEEK_END);
     write(fd, "", 1);
     struct stat sb;
@@ -195,7 +202,7 @@ int main(int argc, char* argv[]) {
         perror("can't get file size\n");
     }
     int fsize = sb.st_size;
-    char* f_in_m = mmap(NULL, 100, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    char* f_in_m = mmap(NULL, fsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     sem_t* sem_calc = sem_open("/calc", O_CREAT, 777, 0);
     if (sem_calc == SEM_FAILED) {
         perror("Semaphores doesn't create");
