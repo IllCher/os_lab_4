@@ -197,14 +197,11 @@ int main(int argc, char* argv[]) {
     int fsize = sb.st_size;
     char* f_in_m = mmap(NULL, 100, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     sem_t* sem_calc = sem_open("/calc", O_CREAT, 777, 0);
-    sem_t* sem_out = sem_open("/out", O_CREAT, 777, 0);
-    if (sem_calc == SEM_FAILED || sem_out == SEM_FAILED) {
+    if (sem_calc == SEM_FAILED) {
         perror("Semaphores doesn't create");
         exit(1);
     }
     sem_unlink("/calc");
-    sem_unlink("/out");
-    //int size = 100 * sizeof(ans);
     pid_t pr = -1;
     pr = fork();
     if (pr < 0) {
@@ -212,9 +209,7 @@ int main(int argc, char* argv[]) {
     } else if (pr > 0) {
         while (read(0, cmd, 100)) {
             parsed = parser(cmd);
-            char* buf = (char*)malloc(100);
-            sprintf(buf, "%d %d %s", parsed->cmd, parsed->val, parsed->path);
-            strcat(f_in_m, buf);
+            sprintf(f_in_m, "%d %d %s", parsed->cmd, parsed->val, parsed->path);
             if (parsed->cmd == 3) {
                 return 0;
             }
@@ -222,19 +217,15 @@ int main(int argc, char* argv[]) {
                 cmd[i] = '\0';
             }
             sem_post(sem_calc);
-            sem_wait(sem_out);
         }
         sem_post(sem_calc);
-        sem_wait(sem_out);
         close(fd);
     } else {
 
         while (1) {
             sem_wait(sem_calc);
             queue *q = q_create();
-            char* buf = (char*)malloc(100);
-            strcat(buf, f_in_m);
-            sscanf(buf, "%d %d %32s", &parsed->cmd, &parsed->val, parsed->path);
+            sscanf(f_in_m, "%d %d %32s", &parsed->cmd, &parsed->val, parsed->path);
             int k = 0;
             while (parsed->path[k] != '\0') {
                 push(q, parsed->path[k]);
@@ -279,12 +270,10 @@ int main(int argc, char* argv[]) {
                 write(1, "invalid command\n", 16);
             }
             q_destroy(q);
-            sem_post(sem_out);
             lseek(fd, 0, SEEK_SET);
             write(fd, "", 100);
         }
         sem_close(sem_calc);
-        sem_close(sem_out);
         munmap(f_in_m, 100);
         lseek(fd, 0, SEEK_SET);
         write(fd, "", 100);
