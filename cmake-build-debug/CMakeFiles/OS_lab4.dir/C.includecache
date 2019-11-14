@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ilya/OS_lab4/c_queue.h
+stdbool.h
+-
+
+/home/ilya/OS_lab4/main.c
+stdio.h
+-
+stdbool.h
+-
+stdlib.h
+-
+string.h
+-
+sys/types.h
+-
+fcntl.h
+-
+sys/mman.h
+-
+sys/stat.h
+-
+unistd.h
+-
+c_queue.h
+/home/ilya/OS_lab4/c_queue.h
+
