@@ -188,11 +188,14 @@ int main(int argc, char* argv[]) {
     char cmd[100] = {'\0'};
     ans *parsed = (ans *) malloc(sizeof(ans));
     int fd = open(argv[1], O_RDWR, S_IRUSR | S_IWUSR);
-    /*struct stat sb;
+    lseek(fd, 100, SEEK_END);
+    write(fd, "", 1);
+    struct stat sb;
     if (fstat(fd, &sb) == -1) {
         perror("can't get file size\n");
-    }*/
-    void* f_in_m = mmap(NULL, 41, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    }
+    int fsize = sb.st_size;
+    char* f_in_m = mmap(NULL, fsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     sem_t* sem_calc = sem_open("/calc", O_CREAT, 777, 0);
     sem_t* sem_out = sem_open("/out", O_CREAT, 777, 0);
     if (sem_calc == SEM_FAILED || sem_out == SEM_FAILED) {
@@ -201,7 +204,7 @@ int main(int argc, char* argv[]) {
     }
     sem_unlink("/calc");
     sem_unlink("/out");
-    int size = 100 * sizeof(ans);
+    //int size = 100 * sizeof(ans);
     pid_t pr = -1;
     pr = fork();
     if (pr < 0) {
@@ -209,15 +212,9 @@ int main(int argc, char* argv[]) {
     } else if (pr > 0) {
         while (read(0, cmd, 100)) {
             parsed = parser(cmd);
-            int* f1 = (int*) malloc(sizeof(int));
-            int* f2 = (int*) malloc(sizeof(int));
-            char* f3 = (char*) malloc(32);
-            f1 = (int*) ((char*)f_in_m);
-            f2 = (int*) (char*)(f_in_m + 5);
-            f3 = (char*) (f_in_m + 9);
-            *f1 = parsed->cmd;
-            *f2 = parsed->val;
-            f3 = parsed->path;
+            char* buf = (char*)malloc(100);
+            sprintf(buf, "%d %d %s", parsed->cmd, parsed->val, parsed->path);
+            strcat(f_in_m, buf);
             if (parsed->cmd == 3) {
                 return 0;
             }
@@ -227,7 +224,6 @@ int main(int argc, char* argv[]) {
             sem_post(sem_calc);
             sem_wait(sem_out);
         }
-        //(char)f_in_m[40] = 1;
         sem_post(sem_calc);
         sem_wait(sem_out);
         close(fd);
@@ -235,18 +231,8 @@ int main(int argc, char* argv[]) {
 
         while (1) {
             sem_wait(sem_calc);
-            //if (f_in_m[40] == 1)
-                //break;
-            int* f1 = (int*) malloc(sizeof(int));
-            int* f2 = (int*) malloc(sizeof(int));
-            char* f3 = (char*) malloc(32);
             queue *q = q_create();
-            f1 = (int*)f_in_m;
-            f2 = (int*)(f_in_m + 5);
-            f3 = (char*)(f_in_m + 9);
-            parsed->cmd = *f1;
-            parsed->val = *f2;
-            strcpy(parsed->path, f3);
+            sscanf(f_in_m, "%d %d %32s", &parsed->cmd, &parsed->val, parsed->path);
             int k = 0;
             while (parsed->path[k] != '\0') {
                 push(q, parsed->path[k]);
@@ -295,7 +281,7 @@ int main(int argc, char* argv[]) {
         }
         sem_close(sem_calc);
         sem_close(sem_out);
-        munmap(f_in_m, 41);
+        munmap(f_in_m, 100);
         close(fd);
     }
     return 0;
