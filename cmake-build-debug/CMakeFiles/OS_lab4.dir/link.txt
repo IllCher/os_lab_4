@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/OS_lab4.dir/main.c.o CMakeFiles/OS_lab4.dir/c_queue.c.o  -o OS_lab4 
+/usr/bin/cc  -pthread -g   CMakeFiles/OS_lab4.dir/main.c.o CMakeFiles/OS_lab4.dir/c_queue.c.o  -o OS_lab4 

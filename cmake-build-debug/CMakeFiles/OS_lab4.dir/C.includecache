@@ -27,6 +27,10 @@ sys/mman.h
 -
 sys/stat.h
 -
+semaphore.h
+-
+pthread.h
+-
 unistd.h
 -
 c_queue.h
