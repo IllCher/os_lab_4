@@ -195,7 +195,7 @@ int main(int argc, char* argv[]) {
         perror("can't get file size\n");
     }
     int fsize = sb.st_size;
-    char* f_in_m = mmap(NULL, fsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    char* f_in_m = mmap(NULL, 100, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     sem_t* sem_calc = sem_open("/calc", O_CREAT, 777, 0);
     sem_t* sem_out = sem_open("/out", O_CREAT, 777, 0);
     if (sem_calc == SEM_FAILED || sem_out == SEM_FAILED) {
@@ -232,7 +232,9 @@ int main(int argc, char* argv[]) {
         while (1) {
             sem_wait(sem_calc);
             queue *q = q_create();
-            sscanf(f_in_m, "%d %d %32s", &parsed->cmd, &parsed->val, parsed->path);
+            char* buf = (char*)malloc(100);
+            strcat(buf, f_in_m);
+            sscanf(buf, "%d %d %32s", &parsed->cmd, &parsed->val, parsed->path);
             int k = 0;
             while (parsed->path[k] != '\0') {
                 push(q, parsed->path[k]);
@@ -278,10 +280,14 @@ int main(int argc, char* argv[]) {
             }
             q_destroy(q);
             sem_post(sem_out);
+            lseek(fd, 0, SEEK_SET);
+            write(fd, "", 100);
         }
         sem_close(sem_calc);
         sem_close(sem_out);
         munmap(f_in_m, 100);
+        lseek(fd, 0, SEEK_SET);
+        write(fd, "", 100);
         close(fd);
     }
     return 0;
