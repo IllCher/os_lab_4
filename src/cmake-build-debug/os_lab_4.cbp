@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="OS_lab4"/>
+		<Option title="os_lab_4"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -27,8 +27,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="OS_lab4">
-				<Option output="/home/zebr/os_lab_4-master/src/cmake-build-debug/OS_lab4" prefix_auto="0" extension_auto="0"/>
+			<Target title="os_lab_4">
+				<Option output="/home/zebr/os_lab_4-master/src/cmake-build-debug/os_lab_4" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/zebr/os_lab_4-master/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -44,14 +44,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 OS_lab4"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 os_lab_4"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="OS_lab4/fast">
-				<Option output="/home/zebr/os_lab_4-master/src/cmake-build-debug/OS_lab4" prefix_auto="0" extension_auto="0"/>
+			<Target title="os_lab_4/fast">
+				<Option output="/home/zebr/os_lab_4-master/src/cmake-build-debug/os_lab_4" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/zebr/os_lab_4-master/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -67,7 +67,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 OS_lab4/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 os_lab_4/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zebr/os_lab_4-master/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -85,13 +85,13 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/zebr/os_lab_4-master/src/c_queue.c">
-			<Option target="OS_lab4"/>
+			<Option target="os_lab_4"/>
 		</Unit>
 		<Unit filename="/home/zebr/os_lab_4-master/src/c_queue.h">
-			<Option target="OS_lab4"/>
+			<Option target="os_lab_4"/>
 		</Unit>
 		<Unit filename="/home/zebr/os_lab_4-master/src/main.c">
-			<Option target="OS_lab4"/>
+			<Option target="os_lab_4"/>
 		</Unit>
 		<Unit filename="/home/zebr/os_lab_4-master/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

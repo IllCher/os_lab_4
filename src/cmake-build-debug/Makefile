@@ -48,10 +48,10 @@ RM = /opt/clion-2019.2.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ilya/OS_lab4
+CMAKE_SOURCE_DIR = /home/zebr/os_lab_4-master/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ilya/OS_lab4/cmake-build-debug
+CMAKE_BINARY_DIR = /home/zebr/os_lab_4-master/src/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ilya/OS_lab4/cmake-build-debug/CMakeFiles /home/ilya/OS_lab4/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles /home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ilya/OS_lab4/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named OS_lab4
+# Target rules for targets named os_lab_4
 
 # Build rule for target.
-OS_lab4: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 OS_lab4
-.PHONY : OS_lab4
+os_lab_4: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 os_lab_4
+.PHONY : os_lab_4
 
 # fast build rule for target.
-OS_lab4/fast:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/build
-.PHONY : OS_lab4/fast
+os_lab_4/fast:
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/build
+.PHONY : os_lab_4/fast
 
 c_queue.o: c_queue.c.o
 
@@ -129,7 +129,7 @@ c_queue.o: c_queue.c.o
 
 # target to build an object file
 c_queue.c.o:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/c_queue.c.o
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/c_queue.c.o
 .PHONY : c_queue.c.o
 
 c_queue.i: c_queue.c.i
@@ -138,7 +138,7 @@ c_queue.i: c_queue.c.i
 
 # target to preprocess a source file
 c_queue.c.i:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/c_queue.c.i
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/c_queue.c.i
 .PHONY : c_queue.c.i
 
 c_queue.s: c_queue.c.s
@@ -147,7 +147,7 @@ c_queue.s: c_queue.c.s
 
 # target to generate assembly for a file
 c_queue.c.s:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/c_queue.c.s
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/c_queue.c.s
 .PHONY : c_queue.c.s
 
 main.o: main.c.o
@@ -156,7 +156,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/main.c.o
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -165,7 +165,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/main.c.i
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -174,7 +174,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/OS_lab4.dir/build.make CMakeFiles/OS_lab4.dir/main.c.s
+	$(MAKE) -f CMakeFiles/os_lab_4.dir/build.make CMakeFiles/os_lab_4.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -184,7 +184,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... OS_lab4"
+	@echo "... os_lab_4"
 	@echo "... edit_cache"
 	@echo "... c_queue.o"
 	@echo "... c_queue.i"

@@ -1,3 +1,3 @@
-/home/ilya/OS_lab4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/ilya/OS_lab4/cmake-build-debug/CMakeFiles/OS_lab4.dir
-/home/ilya/OS_lab4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/os_lab_4.dir
+/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/edit_cache.dir

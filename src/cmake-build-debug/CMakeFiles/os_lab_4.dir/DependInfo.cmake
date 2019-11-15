@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/zebr/os_lab_4-master/src/c_queue.c" "/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/OS_lab4.dir/c_queue.c.o"
-  "/home/zebr/os_lab_4-master/src/main.c" "/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/OS_lab4.dir/main.c.o"
+  "/home/zebr/os_lab_4-master/src/c_queue.c" "/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/os_lab_4.dir/c_queue.c.o"
+  "/home/zebr/os_lab_4-master/src/main.c" "/home/zebr/os_lab_4-master/src/cmake-build-debug/CMakeFiles/os_lab_4.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
